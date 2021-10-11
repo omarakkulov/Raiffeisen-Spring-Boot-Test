@@ -25,18 +25,12 @@ public class SockServiceImpl implements SockService {
                 "quantity value must be > 0");
     }
 
-    /**
-     * Метод ищет носки, подходящие по цвету и процентному содержанию хлопка в них
-     *
-     * @param comingSock - объект класса Sock, приходящий в теле POST запроса 'api/socks/outcome'
-     * @return объект типа Sock с измененным состоянием
-     */
     @Override
     public Sock getSockByColorAndCottonPartAndOutcome(Sock comingSock) {
 
-        String comingSockColor = comingSock.getColor();
-        int comingSockCottonPart = comingSock.getCottonPart();
-        int comingSockQuantity = comingSock.getQuantity();
+        var comingSockColor = comingSock.getColor();
+        var comingSockCottonPart = comingSock.getCottonPart();
+        var comingSockQuantity = comingSock.getQuantity();
 
         var currentSock = sockRepository.findSockByColorAndCottonPart(
                 comingSockColor, comingSockCottonPart);
@@ -44,80 +38,61 @@ public class SockServiceImpl implements SockService {
         if (currentSock == null) {
             throw new SockIncorrectDataException(
                     "We apologize for the inconvenience, " +
-                            "socks with this cottonPart value is not available in our warehouse right now");
+                            "socks with this cottonPart value is not available in our stock right now");
         }
 
         if (currentSock.getQuantity() >= comingSockQuantity) {
 
             int newQuantity = currentSock.getQuantity() - comingSockQuantity;
             currentSock.setQuantity(newQuantity);
-
         } else {
 
             int quantityOfCurrentSock = currentSock.getQuantity();
             throw new SockIncorrectDataException
-                    (String.format("We apologize for the inconvenience, there are only %s pairs of socks in " +
-                                    "store warehouse right now, please select fewer pairs than you need",
+                    (String.format("We apologize for the inconvenience, " +
+                                    "there are only %s pairs of socks in store warehouse right now, " +
+                                    "please select fewer pairs than you need",
                             quantityOfCurrentSock));
         }
 
         return sockRepository.save(currentSock);
     }
 
-    /**
-     * Метод ищет общее количество всех носков, подходящих по параметрам в запросе
-     *
-     * @param color      - цвет носков
-     * @param operation  - 'moreThan, lessThan, equal'
-     * @param cottonPart - процентное содержание хлопка в носках
-     * @return строковое представление общего количества носков, удовлетворяющих параметрам
-     */
-    @Override
-    public String getSockByOperation(String color, String operation, int cottonPart) {
+    public String getSockByOperation(String color, Operation operation, int cottonPart) {
 
         var socks = sockRepository.findAllByColor(color);
 
-        /*
-         * Если параметр operation = "moreThan"
-         */
-        if (operation.equals(Operation.moreThan.toString())) {
+        switch (operation) {
 
-            return socks.stream()
-                    .filter(sock -> sock.getCottonPart() > cottonPart)
-                    .map(Sock::getQuantity)
-                    .reduce(0, Integer::sum)
-                    .toString();
+            case moreThan:
+                return socks.stream()
+                        .filter(sock -> sock.getCottonPart() > cottonPart)
+                        .map(Sock::getQuantity)
+                        .reduce(0, Integer::sum)
+                        .toString();
+
+            case lessThan:
+                return socks.stream()
+                        .filter(sock -> sock.getCottonPart() < cottonPart)
+                        .map(Sock::getQuantity)
+                        .reduce(0, Integer::sum)
+                        .toString();
+
+            case equal:
+                return socks.stream()
+                        .filter(sock -> sock.getCottonPart() == cottonPart)
+                        .map(Sock::getQuantity)
+                        .reduce(0, Integer::sum)
+                        .toString();
+
+            default:
+                return "No socks with this parameters";
         }
-
-        /*
-         * Если параметр operation = "lessThan"
-         */
-        if (operation.equals(Operation.lessThan.toString())) {
-
-            return socks.stream()
-                    .filter(sock -> sock.getCottonPart() < cottonPart)
-                    .map(Sock::getQuantity)
-                    .reduce(0, Integer::sum)
-                    .toString();
-        }
-
-        /*
-         * Если параметр operation = "equal"
-         */
-        if (operation.equals(Operation.equal.toString())) {
-
-            return socks.stream()
-                    .filter(sock -> sock.getCottonPart() == cottonPart)
-                    .map(Sock::getQuantity)
-                    .reduce(0, Integer::sum)
-                    .toString();
-        }
-
-        return "No socks with this parameters";
     }
 
     @Override
     public Sock getSocksById(long sockId) {
+
         return sockRepository.findById(sockId)
                 .orElseThrow(() -> new SockIncorrectDataException(String.format(
                         "Sock with id: %s is not found!", sockId)));
@@ -125,6 +100,7 @@ public class SockServiceImpl implements SockService {
 
     @Override
     public void deleteSocksById(long sockId) {
+
         sockRepository.deleteById(sockId);
     }
 }

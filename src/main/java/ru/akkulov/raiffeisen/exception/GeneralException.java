@@ -1,6 +1,7 @@
 package ru.akkulov.raiffeisen.exception;
 
 public class GeneralException extends RuntimeException {
+
     public GeneralException(Exception e) {
         super(e);
     }

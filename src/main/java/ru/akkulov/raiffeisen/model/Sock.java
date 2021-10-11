@@ -1,8 +1,9 @@
 package ru.akkulov.raiffeisen.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
@@ -10,9 +11,7 @@ import javax.persistence.*;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Setter
-@Getter
-@ToString
+@Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Sock {
     @Id
@@ -20,15 +19,15 @@ public class Sock {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "color")
-    @JsonProperty("color")
+    @Column(name = "color",
+            nullable = false)
     private String color;
 
-    @Column(name = "cotton_part")
-    @JsonProperty("cottonPart")
+    @Column(name = "cotton_part",
+            nullable = false)
     private int cottonPart;
 
-    @Column(name = "quantity")
-    @JsonProperty("quantity")
+    @Column(name = "quantity",
+            nullable = false)
     private int quantity;
 }

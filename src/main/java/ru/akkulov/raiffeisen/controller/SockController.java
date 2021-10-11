@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import ru.akkulov.raiffeisen.model.Sock;
 import ru.akkulov.raiffeisen.service.SockService;
+import ru.akkulov.raiffeisen.util.Operation;
 
 @RestController
 @RequiredArgsConstructor
@@ -29,7 +30,7 @@ public class SockController {
 
     @GetMapping
     public ResponseEntity<String> getSocksByParameters(@RequestParam String color,
-                                                       @RequestParam String operation,
+                                                       @RequestParam Operation operation,
                                                        @RequestParam int cottonPart) {
 
         var sock = sockService.getSockByOperation(color, operation, cottonPart);

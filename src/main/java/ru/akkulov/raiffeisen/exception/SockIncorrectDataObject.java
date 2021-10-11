@@ -10,5 +10,6 @@ import lombok.Setter;
 @Setter
 @Getter
 public class SockIncorrectDataObject {
+
     private String info;
 }
