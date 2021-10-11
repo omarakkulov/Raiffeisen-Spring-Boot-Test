@@ -25,6 +25,12 @@ public class SockServiceImpl implements SockService {
                 "quantity value must be > 0");
     }
 
+    /**
+     * Метод ищет носки, подходящие по цвету и процентному содержанию хлопка в них
+     *
+     * @param comingSock - объект класса Sock, приходящий в теле POST запроса 'api/socks/outcome'
+     * @return объект типа Sock с измененным состоянием
+     */
     @Override
     public Sock getSockByColorAndCottonPartAndOutcome(Sock comingSock) {
 
@@ -58,6 +64,14 @@ public class SockServiceImpl implements SockService {
         return sockRepository.save(currentSock);
     }
 
+    /**
+     * Метод ищет общее количество всех носков, подходящих по параметрам в запросе
+     *
+     * @param color      - цвет носков
+     * @param operation  - 'moreThan, lessThan, equal'
+     * @param cottonPart - процентное содержание хлопка в носках
+     * @return строковое представление общего количества носков, удовлетворяющих параметрам
+     */
     @Override
     public String getSockByOperation(String color, String operation, int cottonPart) {
 
