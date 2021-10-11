@@ -9,6 +9,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @Setter
 @Getter
-public class SockIncorrectData {
+public class SockIncorrectDataObject {
     private String info;
 }

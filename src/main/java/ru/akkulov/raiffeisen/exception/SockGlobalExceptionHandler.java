@@ -15,20 +15,20 @@ public class SockGlobalExceptionHandler {
      * надеюсь это правильное решение
      */
     @ExceptionHandler
-    public ResponseEntity<SockIncorrectData> handleException(
+    public ResponseEntity<SockIncorrectDataObject> handleException(
             SockIncorrectDataException exception) {
 
-        SockIncorrectData data = new SockIncorrectData();
+        SockIncorrectDataObject data = new SockIncorrectDataObject();
         data.setInfo(exception.getMessage());
 
         return new ResponseEntity<>(data, HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler
-    public ResponseEntity<SockIncorrectData> handleException(
+    public ResponseEntity<SockIncorrectDataObject> handleException(
             Exception exception) {
 
-        SockIncorrectData data = new SockIncorrectData();
+        SockIncorrectDataObject data = new SockIncorrectDataObject();
         data.setInfo(exception.getMessage());
 
         return new ResponseEntity<>(data, HttpStatus.BAD_REQUEST);
