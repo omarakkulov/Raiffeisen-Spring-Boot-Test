@@ -51,7 +51,7 @@ public class SockServiceImpl implements SockService {
         return sockRepository.save(currentSock);
     }
 
-    public String getSockByOperation(String color, Operation operation, int cottonPart) {
+    public String getQuantityByParameters(String color, Operation operation, int cottonPart) {
         var socks = sockRepository.findAllByColor(color);
 
         switch (operation) {

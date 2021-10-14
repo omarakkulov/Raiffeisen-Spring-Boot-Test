@@ -26,7 +26,7 @@ public interface SockService {
      *
      * @return {@link String} общее количество всех носков на складе, удовлетворяющее веденным параметрам
      */
-    String getSockByOperation(String color, Operation operation, int cottonPart);
+    String getQuantityByParameters(String color, Operation operation, int cottonPart);
 
     /**
      * Создает Sock.

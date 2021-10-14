@@ -3,7 +3,6 @@ package ru.akkulov.raiffeisen.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import ru.akkulov.raiffeisen.model.Sock;
 import ru.akkulov.raiffeisen.service.SockService;
@@ -11,7 +10,6 @@ import ru.akkulov.raiffeisen.util.Operation;
 
 @RestController
 @RequiredArgsConstructor
-@Transactional
 @RequestMapping("/socks")
 public class SockController {
     private final SockService sockService;
@@ -27,11 +25,11 @@ public class SockController {
     }
 
     @GetMapping
-    public ResponseEntity<String> getSocksByParameters(@RequestParam String color,
-                                                       @RequestParam Operation operation,
-                                                       @RequestParam int cottonPart) {
+    public ResponseEntity<String> getQuantityByParameters(@RequestParam String color,
+                                                          @RequestParam Operation operation,
+                                                          @RequestParam int cottonPart) {
 
-        return ResponseEntity.ok(sockService.getSockByOperation(color, operation, cottonPart));
+        return ResponseEntity.ok(sockService.getQuantityByParameters(color, operation, cottonPart));
     }
 
     @GetMapping("/{id}")
