@@ -24,12 +24,13 @@ public interface SockService {
      * @param operation  'moreThan', 'lessThan', 'equal'
      * @param cottonPart процентное содержание хлопка в носках
      *
-     * @return строковое представление общего количества носков, удовлетворяющих параметрам
+     * @return общего количества носков (число), удовлетворяющих параметрам в виде строки
      */
     String getSockByOperation(String color, Operation operation, int cottonPart);
 
     /**
      * Создает Sock.
+     *
      * @param sock {@link Sock}
      * @throws SockIncorrectDataException exc
      */
@@ -37,6 +38,7 @@ public interface SockService {
 
     /**
      * Возвращает Sock по id
+     *
      * @param sockId идентификатор
      *
      * @return {@link Sock}
@@ -45,6 +47,7 @@ public interface SockService {
 
     /**
      * Удаляет Sock по id
+     *
      * @param sockId идентификатор
      */
     void deleteSocksById(long sockId);
