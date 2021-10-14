@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Класс для ответа при невалидных входных данных.
+ */
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter

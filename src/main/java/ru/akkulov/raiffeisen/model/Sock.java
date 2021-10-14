@@ -5,8 +5,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.GenerationType;
+import javax.persistence.Column;
 
+/**
+ * Сущность носков.
+ */
 @Table(name = "socks")
 @Entity
 @AllArgsConstructor
@@ -14,9 +22,9 @@ import javax.persistence.*;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Sock {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
 
     @Column(name = "color",
@@ -30,4 +38,5 @@ public class Sock {
     @Column(name = "quantity",
             nullable = false)
     private int quantity;
+
 }

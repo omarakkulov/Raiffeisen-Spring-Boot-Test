@@ -18,14 +18,12 @@ public class SockController {
 
     @PostMapping("/income")
     public ResponseEntity<Sock> addSock(@RequestBody Sock sock) {
-        var currentSock = sockService.createSock(sock);
-        return ResponseEntity.ok(currentSock);
+        return ResponseEntity.ok(sockService.createSock(sock));
     }
 
     @PostMapping("/outcome")
     public ResponseEntity<Sock> outComeSocks(@RequestBody Sock comingSock) {
-        var currentSock = sockService.getSockByColorAndCottonPartAndOutcome(comingSock);
-        return ResponseEntity.ok(currentSock);
+        return ResponseEntity.ok(sockService.getSockByColorAndCottonPartAndOutcome(comingSock));
     }
 
     @GetMapping
@@ -33,15 +31,12 @@ public class SockController {
                                                        @RequestParam Operation operation,
                                                        @RequestParam int cottonPart) {
 
-        var sock = sockService.getSockByOperation(color, operation, cottonPart);
-
-        return ResponseEntity.ok(sock);
+        return ResponseEntity.ok(sockService.getSockByOperation(color, operation, cottonPart));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Sock> getSocksById(@PathVariable long id) {
-        var currentSock = sockService.getSocksById(id);
-        return ResponseEntity.ok(currentSock);
+        return ResponseEntity.ok(sockService.getSocksById(id));
     }
 
     @DeleteMapping("/{id}")

@@ -7,31 +7,45 @@ import ru.akkulov.raiffeisen.util.Operation;
 public interface SockService {
 
     /**
-     * Метод ищет объект класса Sock из БД, который подходит по цвету (color)
-     * и процентному содержанию хлопка в нем (cotton_part) и орудует с количеством носков (quantity)
+     * Возвращает Sock по цвету и процентному содержанию хлопка.
      *
-     * @param comingSock - объект класса Sock, приходящий в теле POST запроса 'api/socks/outcome'
-     * @return объект типа Sock с измененным состоянием
-     * @throws SockIncorrectDataException
+     * @param comingSock объект класса {@link Sock}
+     *
+     * @return объект типа {@link Sock} с измененным состоянием
+     *
+     * @throws SockIncorrectDataException exc
      */
     Sock getSockByColorAndCottonPartAndOutcome(Sock comingSock);
 
     /**
-     * Метод ищет общее количество всех носков, подходящих по параметрам в запросе
+     * Метод возвращает общее количество всех носков (quantity)
      *
-     * @param color      - цвет носков
-     * @param operation  - 'moreThan', 'lessThan', 'equal'
-     * @param cottonPart - процентное содержание хлопка в носках
+     * @param color      цвет
+     * @param operation  'moreThan', 'lessThan', 'equal'
+     * @param cottonPart процентное содержание хлопка в носках
+     *
      * @return строковое представление общего количества носков, удовлетворяющих параметрам
      */
     String getSockByOperation(String color, Operation operation, int cottonPart);
 
     /**
-     * @throws SockIncorrectDataException
+     * Создает Sock.
+     * @param sock {@link Sock}
+     * @throws SockIncorrectDataException exc
      */
     Sock createSock(Sock sock);
 
+    /**
+     * Возвращает Sock по id
+     * @param sockId идентификатор
+     *
+     * @return {@link Sock}
+     */
     Sock getSocksById(long sockId);
 
+    /**
+     * Удаляет Sock по id
+     * @param sockId идентификатор
+     */
     void deleteSocksById(long sockId);
 }

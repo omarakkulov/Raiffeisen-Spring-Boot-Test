@@ -1,5 +1,8 @@
 package ru.akkulov.raiffeisen.exception;
 
+/**
+ * Базовый класс для всех пробрасываемых исключений
+ */
 public class GeneralException extends RuntimeException {
 
     public GeneralException(Exception e) {

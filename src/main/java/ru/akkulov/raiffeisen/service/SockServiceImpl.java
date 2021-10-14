@@ -27,11 +27,9 @@ public class SockServiceImpl implements SockService {
 
     @Override
     public Sock getSockByColorAndCottonPartAndOutcome(Sock comingSock) {
-
         var comingSockColor = comingSock.getColor();
         var comingSockCottonPart = comingSock.getCottonPart();
         var comingSockQuantity = comingSock.getQuantity();
-
         var currentSock = sockRepository.findSockByColorAndCottonPart(
                 comingSockColor, comingSockCottonPart);
 
@@ -42,11 +40,9 @@ public class SockServiceImpl implements SockService {
         }
 
         if (currentSock.getQuantity() >= comingSockQuantity) {
-
             int newQuantity = currentSock.getQuantity() - comingSockQuantity;
             currentSock.setQuantity(newQuantity);
         } else {
-
             int quantityOfCurrentSock = currentSock.getQuantity();
             throw new SockIncorrectDataException
                     (String.format("We apologize for the inconvenience, " +
@@ -59,7 +55,6 @@ public class SockServiceImpl implements SockService {
     }
 
     public String getSockByOperation(String color, Operation operation, int cottonPart) {
-
         var socks = sockRepository.findAllByColor(color);
 
         switch (operation) {
@@ -70,21 +65,18 @@ public class SockServiceImpl implements SockService {
                         .map(Sock::getQuantity)
                         .reduce(0, Integer::sum)
                         .toString();
-
             case lessThan:
                 return socks.stream()
                         .filter(sock -> sock.getCottonPart() < cottonPart)
                         .map(Sock::getQuantity)
                         .reduce(0, Integer::sum)
                         .toString();
-
             case equal:
                 return socks.stream()
                         .filter(sock -> sock.getCottonPart() == cottonPart)
                         .map(Sock::getQuantity)
                         .reduce(0, Integer::sum)
                         .toString();
-
             default:
                 return "No socks with this parameters";
         }
@@ -92,7 +84,6 @@ public class SockServiceImpl implements SockService {
 
     @Override
     public Sock getSocksById(long sockId) {
-
         return sockRepository.findById(sockId)
                 .orElseThrow(() -> new SockIncorrectDataException(String.format(
                         "Sock with id: %s is not found!", sockId)));
@@ -100,7 +91,6 @@ public class SockServiceImpl implements SockService {
 
     @Override
     public void deleteSocksById(long sockId) {
-
         sockRepository.deleteById(sockId);
     }
 }

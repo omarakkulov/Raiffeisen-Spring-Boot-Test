@@ -9,12 +9,11 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class SockGlobalExceptionHandler {
 
     /**
-     * Метод срабатывает, когда выбрасывается SockIncorrectDataException,
-     * в том случае, например, когда нет носков по указанному id, или же когда в post методе
-     * введены невалидные данные для параметров cottonPart и quantity,
-     * надеюсь это правильное решение
+     * Метод срабатывает, когда выбрасывается SockIncorrectDataException, в том случае, например,
+     * когда нет носков по указанному id, или же когда в post методе
+     * введены невалидные данные для параметров cottonPart и quantity
      *
-     * @return новый JSON ответ в виде "info":"Сообщение об ошибке"
+     * @return {@link SockIncorrectDataObject} JSON объект в виде "info":"Сообщение об ошибке"
      */
     @ExceptionHandler
     public ResponseEntity<SockIncorrectDataObject> handleException(
@@ -27,9 +26,9 @@ public class SockGlobalExceptionHandler {
     }
 
     /**
-     * Метод срабатывает при любых эксепшенах, возникающих при работе приложения
+     * Метод срабатывает при любых исключениях, возникающих при работе приложения
      *
-     * @return новый JSON ответ в виде "info":"Сообщение об ошибке"
+     * @return {@link SockIncorrectDataObject} JSON объект в виде "info":"Сообщение об ошибке"
      */
     @ExceptionHandler
     public ResponseEntity<SockIncorrectDataObject> handleException(Exception exception) {
