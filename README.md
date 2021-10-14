@@ -1,4 +1,7 @@
 # Raiffeisen-Spring-Boot-Test
+
+Само тестовое задание - https://github.com/Raiffeisen-DGTL/cib-interns-test-task
+
 ## Используемый стек:
 Java 11, PostgreSQL, Liquibase, SpringBoot, Spring Data Jpa, Lombok
 
