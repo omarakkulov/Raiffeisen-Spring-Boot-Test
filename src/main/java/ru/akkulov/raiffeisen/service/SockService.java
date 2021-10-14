@@ -24,7 +24,8 @@ public interface SockService {
      * @param operation  'moreThan', 'lessThan', 'equal'
      * @param cottonPart процентное содержание хлопка в носках
      *
-     * @return общего количества носков (число), удовлетворяющих параметрам в виде строки
+     * @return строковое представление общего количества всех носков на складе,
+     * удовлетворяющих веденным параметрам
      */
     String getSockByOperation(String color, Operation operation, int cottonPart);
 
