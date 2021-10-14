@@ -16,10 +16,8 @@ public class SockServiceImpl implements SockService {
 
     @Override
     public Sock createSock(Sock sock) {
-        if (sock.getCottonPart() >= 0 && sock.getCottonPart() <= 100) {
-            if (sock.getQuantity() > 0) {
-                return sockRepository.save(sock);
-            }
+        if (sock.getCottonPart() >= 0 && sock.getCottonPart() <= 100 && sock.getQuantity() > 0) {
+            return sockRepository.save(sock);
         }
         throw new SockIncorrectDataException("cottonPart value must be between 0-100, " +
                 "quantity value must be > 0");
