@@ -41,12 +41,11 @@ public class SockServiceImpl implements SockService {
             int newQuantity = currentSock.getQuantity() - comingSockQuantity;
             currentSock.setQuantity(newQuantity);
         } else {
-            int quantityOfCurrentSock = currentSock.getQuantity();
             throw new SockIncorrectDataException
                     (String.format("We apologize for the inconvenience, " +
                                     "there are only %s pairs of socks in store warehouse right now, " +
                                     "please select fewer pairs than you need",
-                            quantityOfCurrentSock));
+                            currentSock.getQuantity()));
         }
 
         return sockRepository.save(currentSock);
