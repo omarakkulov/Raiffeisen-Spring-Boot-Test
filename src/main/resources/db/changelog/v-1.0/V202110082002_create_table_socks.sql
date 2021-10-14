@@ -4,4 +4,4 @@ CREATE TABLE IF NOT EXISTS "socks"
     color       VARCHAR(255) NOT NULL,
     cotton_part INTEGER      NOT NULL,
     quantity    INTEGER      NOT NULL
-)
+);
