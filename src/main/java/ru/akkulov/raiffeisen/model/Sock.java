@@ -1,6 +1,7 @@
 package ru.akkulov.raiffeisen.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,6 +24,7 @@ import javax.persistence.Column;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Sock {
 
+    @ApiModelProperty(hidden = true)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
