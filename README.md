@@ -3,7 +3,7 @@
 Тестовое задание - https://github.com/Raiffeisen-DGTL/cib-interns-test-task
 
 ## Используемый стек:
-Java 11, PostgreSQL, Liquibase, SpringBoot, Spring Data Jpa, Lombok, Maven, Swagger
+Java 11, PostgreSQL, Liquibase, SpringBoot, Spring Data Jpa, Maven, Swagger, Lombok
 
 ## Подробнее:
 ### Для запуска приложения требуется иметь PostgreSQL на устройстве.
