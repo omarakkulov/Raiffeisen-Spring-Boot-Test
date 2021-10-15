@@ -10,7 +10,7 @@ import java.util.List;
 public interface SockRepository extends JpaRepository<Sock, Long> {
 
     /**
-     * Возвращает список {@link Sock} по цвету
+     * Возвращает список партий носков {@link Sock} по цвету
      *
      * @param color цвет
      *
@@ -19,7 +19,7 @@ public interface SockRepository extends JpaRepository<Sock, Long> {
     List<Sock> findAllByColor(String color);
 
     /**
-     * Возвращает {@link Sock} по цвету и содержанию хлопка
+     * Возвращает партию носков {@link Sock} по цвету и содержанию хлопка
      *
      * @param color цвет
      * @param cottonPart содержание хлопка

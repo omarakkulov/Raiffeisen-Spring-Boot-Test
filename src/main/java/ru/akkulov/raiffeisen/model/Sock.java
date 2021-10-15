@@ -14,7 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Column;
 
 /**
- * Сущность носков.
+ * Сущность одной партии носков.
  */
 @Table(name = "socks")
 @Entity

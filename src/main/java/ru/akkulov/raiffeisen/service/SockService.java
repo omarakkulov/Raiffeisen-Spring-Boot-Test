@@ -9,7 +9,7 @@ import java.util.List;
 public interface SockService {
 
     /**
-     * Возвращает Sock по цвету и процентному содержанию хлопка.
+     * Возвращает партию Sock по цвету и процентному содержанию хлопка.
      *
      * @param comingSock объект класса {@link Sock}
      *
@@ -20,7 +20,7 @@ public interface SockService {
     Sock getSockByColorAndCottonPart(Sock comingSock);
 
     /**
-     * Метод возвращает общее количество всех носков (quantity)
+     * Метод возвращает общее количество всех носков (quantity) со всех партий
      *
      * @param color      цвет
      * @param operation  'moreThan', 'lessThan', 'equal'
@@ -31,7 +31,7 @@ public interface SockService {
     String getQuantityByParameters(String color, Operation operation, int cottonPart);
 
     /**
-     * Создает Sock.
+     * Создает партию носков Sock.
      *
      * @param sock {@link Sock}
      * @throws SockIncorrectDataException exc
@@ -39,7 +39,7 @@ public interface SockService {
     Sock createSock(Sock sock);
 
     /**
-     * Возвращает Sock по id.
+     * Возвращает партию носков Sock по id.
      *
      * @param sockId идентификатор
      *
@@ -48,14 +48,14 @@ public interface SockService {
     Sock getSocksById(long sockId);
 
     /**
-     * Удаляет Sock по id.
+     * Удаляет партию носков Sock по id.
      *
      * @param sockId идентификатор
      */
     void deleteSocksById(long sockId);
 
     /**
-     * Возвращает список всех {@link Sock}
+     * Возвращает список всех партий носков {@link Sock}
      *
      * @return List<Sock>
      */
