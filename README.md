@@ -6,7 +6,8 @@
 Java 11, PostgreSQL, Liquibase, SpringBoot, Spring Data Jpa, Lombok, Maven, Swagger
 
 ## К проекту подключен Swagger, рабочий URL адрес к нему:
-http://localhost:8081/api/swagger-ui.html#/    ###### Учитывайте номер порта при обращении к адресу, если поменяли его в application.properties
+###### Учитывайте номер порта при обращении к адресу, если поменяли его в application.properties
+http://localhost:8081/api/swagger-ui.html#/
 
 ## Подробнее:
 ### Для запуска приложения требуется иметь PostgreSQL на устройстве.
