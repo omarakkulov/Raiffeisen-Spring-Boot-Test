@@ -18,5 +18,6 @@ Java 11, PostgreSQL, Liquibase, SpringBoot, Spring Data Jpa, Maven, Swagger, Lom
 ## К проекту подключен Swagger API, рабочий URL адрес к нему:
 ###### Учитывайте номер порта при обращении к адресу, если поменяли его в application.properties
 http://localhost:8081/api/swagger-ui.html#/
+> Можете не обращать внимания на него, если нет необходимости пользования
 
 ### К сожалению, не успел разобраться с докером и развернуть БД в докер-контейнере :(
