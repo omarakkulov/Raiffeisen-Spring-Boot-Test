@@ -8,6 +8,7 @@ Java 11, PostgreSQL, Liquibase, SpringBoot, Spring Data Jpa, Lombok, Maven, Swag
 ## Подробнее:
 ### К проекту подключен Swagger, рабочий URL адрес к нему:
 http://localhost:8081/api/swagger-ui.html#/
+Учитывайте номер порта при обращении к адресу, если поменяли его в application.properties
 
 ### Для запуска приложения требуется иметь PostgreSQL на устройстве.
 1. Создать базу данных под названием "raiffeisen_db"
