@@ -24,10 +24,14 @@ public class SockServiceImpl implements SockService {
         var currentSock = sockRepository.findSockByColorAndCottonPart(comingSockColor, comingSockCottonPart);
 
         if (comingSock.getCottonPart() >= 0 && comingSock.getCottonPart() <= 100 && comingSock.getQuantity() > 0) {
+            if (currentSock == null) {
+                return sockRepository.save(comingSock);
+            }
             int newQuantity = currentSock.getQuantity() + comingSockQuantity;
             currentSock.setQuantity(newQuantity);
             return sockRepository.save(currentSock);
         }
+
         throw new SockIncorrectDataException("cottonPart value must be between 0-100, " +
                 "quantity value must be > 0");
     }
