@@ -5,11 +5,11 @@
 ## Используемый стек:
 Java 11, PostgreSQL, Liquibase, SpringBoot, Spring Data Jpa, Lombok, Maven, Swagger
 
-## Подробнее:
-### К проекту подключен Swagger, рабочий URL адрес к нему:
+## К проекту подключен Swagger, рабочий URL адрес к нему:
 http://localhost:8081/api/swagger-ui.html#/
 ###### Учитывайте номер порта при обращении к адресу, если поменяли его в application.properties
 
+## Подробнее:
 ### Для запуска приложения требуется иметь PostgreSQL на устройстве.
 1. Создать базу данных под названием "raiffeisen_db"
 2. В папке application.properties на месте этих строк вставить свои значений логина и пароля от БД:
