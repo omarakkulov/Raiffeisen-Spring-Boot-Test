@@ -4,6 +4,8 @@ import ru.akkulov.raiffeisen.exception.SockIncorrectDataException;
 import ru.akkulov.raiffeisen.model.Sock;
 import ru.akkulov.raiffeisen.util.Operation;
 
+import java.util.List;
+
 public interface SockService {
 
     /**
@@ -15,7 +17,7 @@ public interface SockService {
      *
      * @throws SockIncorrectDataException exc
      */
-    Sock getSockByColorAndCottonPartAndOutcome(Sock comingSock);
+    Sock getSockByColorAndCottonPart(Sock comingSock);
 
     /**
      * Метод возвращает общее количество всех носков (quantity)
@@ -37,7 +39,7 @@ public interface SockService {
     Sock createSock(Sock sock);
 
     /**
-     * Возвращает Sock по id
+     * Возвращает Sock по id.
      *
      * @param sockId идентификатор
      *
@@ -46,9 +48,16 @@ public interface SockService {
     Sock getSocksById(long sockId);
 
     /**
-     * Удаляет Sock по id
+     * Удаляет Sock по id.
      *
      * @param sockId идентификатор
      */
     void deleteSocksById(long sockId);
+
+    /**
+     * Возвращает список всех {@link Sock}
+     *
+     * @return List<Sock>
+     */
+    List<Sock> getAllSocks();
 }

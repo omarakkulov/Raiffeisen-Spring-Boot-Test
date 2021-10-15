@@ -9,6 +9,8 @@ import ru.akkulov.raiffeisen.model.Sock;
 import ru.akkulov.raiffeisen.service.SockService;
 import ru.akkulov.raiffeisen.util.Operation;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/socks")
@@ -24,7 +26,7 @@ public class SockController {
     @PostMapping("/outcome")
     @ApiOperation(value = "Remove socks from stock")
     public ResponseEntity<Sock> outComeSocks(@RequestBody Sock comingSock) {
-        return ResponseEntity.ok(sockService.getSockByColorAndCottonPartAndOutcome(comingSock));
+        return ResponseEntity.ok(sockService.getSockByColorAndCottonPart(comingSock));
     }
 
     @GetMapping
@@ -47,5 +49,11 @@ public class SockController {
     public ResponseEntity<Sock> deleteSocksById(@PathVariable long id) {
         sockService.deleteSocksById(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/all-socks")
+    @ApiOperation(value = "Show all socks from stock")
+    public ResponseEntity<List<Sock>> getAllSocks() {
+        return ResponseEntity.ok(sockService.getAllSocks());
     }
 }
