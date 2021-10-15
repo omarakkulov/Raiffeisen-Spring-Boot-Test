@@ -3,7 +3,7 @@
 Тестовое задание - https://github.com/Raiffeisen-DGTL/cib-interns-test-task
 
 ## Используемый стек:
-Java 11, PostgreSQL, Liquibase, SpringBoot, Spring Data Jpa, Lombok, Maven
+Java 11, PostgreSQL, Liquibase, SpringBoot, Spring Data Jpa, Maven, Swagger, Lombok
 
 ## Подробнее:
 ### Для запуска приложения требуется иметь PostgreSQL на устройстве.
@@ -14,5 +14,9 @@ Java 11, PostgreSQL, Liquibase, SpringBoot, Spring Data Jpa, Lombok, Maven
 3. Приложение находится на порте 8081, измените при надобности:
       ###### server.port=${Свое значение}
 4. Запустите приложение :)
-   
+
+## К проекту подключен Swagger API, рабочий URL адрес к нему:
+###### Учитывайте номер порта при обращении к адресу, если поменяли его в application.properties
+http://localhost:8081/api/swagger-ui.html#/
+
 ### К сожалению, не успел разобраться с докером и развернуть БД в докер-контейнере :(
