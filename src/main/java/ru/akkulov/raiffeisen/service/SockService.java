@@ -9,7 +9,7 @@ import java.util.List;
 public interface SockService {
 
     /**
-     * Возвращает партию Sock по цвету и процентному содержанию хлопка.
+     * Удаляет определенное количество носков с одной партии.
      *
      * @param comingSock объект класса {@link Sock}
      *
@@ -17,7 +17,7 @@ public interface SockService {
      *
      * @throws SockIncorrectDataException exc
      */
-    Sock getSockByColorAndCottonPart(Sock comingSock);
+    Sock removeSocksFromStock(Sock comingSock);
 
     /**
      * Метод возвращает общее количество всех носков (quantity) со всех партий

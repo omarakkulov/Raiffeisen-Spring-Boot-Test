@@ -26,7 +26,7 @@ public class SockController {
     @PostMapping("/outcome")
     @ApiOperation(value = "Remove socks from stock")
     public ResponseEntity<Sock> outComeSocks(@RequestBody Sock comingSock) {
-        return ResponseEntity.ok(sockService.getSockByColorAndCottonPart(comingSock));
+        return ResponseEntity.ok(sockService.removeSocksFromStock(comingSock));
     }
 
     @GetMapping

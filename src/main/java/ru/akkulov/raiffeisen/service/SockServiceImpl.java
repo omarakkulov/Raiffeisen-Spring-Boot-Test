@@ -23,12 +23,13 @@ public class SockServiceImpl implements SockService {
         var comingSockQuantity = comingSock.getQuantity();
         var currentSock = sockRepository.findSockByColorAndCottonPart(comingSockColor, comingSockCottonPart);
 
-        if (comingSock.getCottonPart() >= 0 && comingSock.getCottonPart() <= 100 && comingSock.getQuantity() > 0) {
+        if (comingSockCottonPart >= 0 && comingSockCottonPart <= 100 && comingSockQuantity > 0) {
             if (currentSock == null) {
                 return sockRepository.save(comingSock);
             }
             int newQuantity = currentSock.getQuantity() + comingSockQuantity;
             currentSock.setQuantity(newQuantity);
+
             return sockRepository.save(currentSock);
         }
 
@@ -37,7 +38,7 @@ public class SockServiceImpl implements SockService {
     }
 
     @Override
-    public Sock getSockByColorAndCottonPart(Sock comingSock) {
+    public Sock removeSocksFromStock(Sock comingSock) {
         var comingSockColor = comingSock.getColor();
         var comingSockCottonPart = comingSock.getCottonPart();
         var comingSockQuantity = comingSock.getQuantity();
@@ -49,20 +50,20 @@ public class SockServiceImpl implements SockService {
                             "socks with this cottonPart value is not available in our stock right now");
         }
 
-        if (comingSock.getCottonPart() >= 0 && comingSock.getCottonPart() <= 100 && comingSock.getQuantity() > 0) {
+        if (comingSockCottonPart >= 0 && comingSockCottonPart <= 100 && comingSockQuantity > 0) {
             if (currentSock.getQuantity() >= comingSockQuantity) {
                 int newQuantity = currentSock.getQuantity() - comingSockQuantity;
                 currentSock.setQuantity(newQuantity);
-            } else {
-                throw new SockIncorrectDataException
-                        (String.format("We apologize for the inconvenience, " +
-                                        "there are only %s pairs of socks in store warehouse right now, " +
-                                        "please select fewer pairs than you need",
-                                currentSock.getQuantity()));
+
+                return sockRepository.save(currentSock);
             }
         }
 
-        return sockRepository.save(currentSock);
+        throw new SockIncorrectDataException
+                (String.format("We apologize for the inconvenience, " +
+                                "there are only %s pairs of socks in store warehouse right now, " +
+                                "please select fewer pairs than you need",
+                        currentSock.getQuantity()));
     }
 
     public String getQuantityByParameters(String color, Operation operation, int cottonPart) {
